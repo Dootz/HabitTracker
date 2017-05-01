@@ -22,7 +22,7 @@ public class DatabaseOpener extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String SQL_CREATE_ENTRIES =
                 "CREATE TABLE " + HabitEntry.TABLE_NAME + " (" +
-                        HabitEntry._ID + " INTEGER PRIMARY KEY," +
+                        HabitEntry.COLUMN_NAME_ID + " INTEGER PRIMARY KEY," +
                         HabitEntry.COLUMN_NAME_HABIT + " TEXT," +
                         HabitEntry.COLUMN_NAME_HOUR + " TEXT," +
                         HabitEntry.COLUMN_NAME_STATUS + " INTEGER)";
