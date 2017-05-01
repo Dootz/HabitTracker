@@ -1,5 +1,6 @@
 package com.example.android.habittracker;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.ContactsContract;
@@ -22,8 +23,13 @@ public class MainActivity extends AppCompatActivity {
     }
     public void insert(){
         DatabaseOpener opener = new DatabaseOpener(this);
-        SQLiteDatabase db = opener.getReadableDatabase();
-        Cursor cursor = db.rawQuery("INSERT INTO " + HabitContract.HabitEntry.TABLE_NAME + " VALUES ( 1, walk with dog, 18, " + HabitContract.HabitEntry.STATUS_POSPONED + ")", null);
-        }
+        SQLiteDatabase db = opener.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(HabitContract.HabitEntry.COLUMN_NAME_STATUS, HabitContract.HabitEntry.STATUS_DONE);
+        values.put(HabitContract.HabitEntry.COLUMN_NAME_HABIT, "Walk with dog");
+        values.put(HabitContract.HabitEntry.COLUMN_NAME_HOUR, "18");
+        values.put(HabitContract.HabitEntry.COLUMN_NAME_ID, 1);
+        long newRowId = db.insert(HabitContract.HabitEntry.TABLE_NAME, null, values);
+    }
 
 }
