@@ -20,5 +20,10 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor = db.rawQuery("SELECT * FROM " + HabitContract.HabitEntry.TABLE_NAME, null);
         return cursor;
     }
+    public void insert(){
+        DatabaseOpener opener = new DatabaseOpener(this);
+        SQLiteDatabase db = opener.getReadableDatabase();
+        Cursor cursor = db.rawQuery("INSERT INTO " + HabitContract.HabitEntry.TABLE_NAME + " VALUES ( 1, walk with dog, 18, " + HabitContract.HabitEntry.STATUS_POSPONED + ")", null);
+        }
 
 }
